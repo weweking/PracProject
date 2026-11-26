@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Библиотека</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.5;
+      color: #222;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+      width: 100%;
+    }
+    nav a {
+      color: #0b57d0;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hidden {
+      display: none;
+    }
+    .highlight {
+      background-color: #fff3cd;
+    }
+    .top {
+      font-weight: bold;
+      color: #b45309;
+    }
+    section {
+      margin-bottom: 28px;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    input, select, button {
+      padding: 6px 10px;
+      font: inherit;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th[data-sort] {
+      cursor: pointer;
+      user-select: none;
+    }
+    th[data-sort]:hover {
+      background: #f3f4f6;
+    }
+    footer {
+      border-top: 1px solid #ddd;
+      padding-top: 12px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+  <script src="data.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Электронная библиотека</h1>
+    <div id="auth">
+      <button id="login-btn" type="button">Войти</button>
+    </div>
+    <nav>
+      <a href="#catalog">Каталог</a>
+      <a href="#my">Мои книги</a>
+      <a href="#add-section">Добавить книгу</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="login" class="hidden">
+      <input type="text" name="username" placeholder="Логин" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+      <button type="submit">Войти</button>
+    </form>
+
+    <section id="catalog">
+      <h2>Каталог</h2>
+      <form id="search-form">
+        <input type="search" id="q" name="q" placeholder="Поиск по названию или автору...">
+        <select id="genre" name="genre">
+          <option value="">Любой жанр</option>
+          <option value="Роман">Роман</option>
+          <option value="Повесть">Повесть</option>
+          <option value="Фантастика">Фантастика</option>
+        </select>
+        <button type="submit">Найти</button>
+      </form>
+
+      <table id="books">
+        <thead>
+          <tr>
+            <th data-sort="title">Название</th>
+            <th data-sort="author">Автор</th>
+            <th data-sort="genre">Жанр</th>
+            <th data-sort="year">Год</th>
+            <th data-sort="rating">Рейтинг</th>
+            <th>Действие</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="book" data-id="1" data-genre="Роман" data-available="true">
+            <td>Мастер и Маргарита</td>
+            <td>Михаил Булгаков</td>
+            <td>Роман</td>
+            <td>1967</td>
+            <td>4.9</td>
+            <td><button type="button" class="take">Взять</button></td>
+          </tr>
+          <tr class="book" data-id="2" data-genre="Повесть" data-available="true">
+            <td>Собачье сердце</td>
+            <td>Михаил Булгаков</td>
+            <td>Повесть</td>
+            <td>1925</td>
+            <td>4.8</td>
+            <td><button type="button" class="take">Взять</button></td>
+          </tr>
+          <tr class="book" data-id="3" data-genre="Роман" data-available="true">
+            <td>Война и мир</td>
+            <td>Лев Толстой</td>
+            <td>Роман</td>
+            <td>1869</td>
+            <td>4.7</td>
+            <td><button type="button" class="take">Взять</button></td>
+          </tr>
+          <tr class="book" data-id="4" data-genre="Фантастика" data-available="false">
+            <td>Солярис</td>
+            <td>Станислав Лем</td>
+            <td>Фантастика</td>
+            <td>1961</td>
+            <td>4.6</td>
+            <td><button type="button" class="take" disabled>Выдана</button></td>
+          </tr>
+          <tr class="book" data-id="5" data-genre="Фантастика" data-available="true">
+            <td>Гиперион</td>
+            <td>Дэн Симмонс</td>
+            <td>Фантастика</td>
+            <td>1989</td>
+            <td>4.4</td>
+            <td><button type="button" class="take">Взять</button></td>
+          </tr>
+          <tr class="book" data-id="6" data-genre="Повесть" data-available="false">
+            <td>Понедельник начинается в субботу</td>
+            <td>Братья Стругацкие</td>
+            <td>Повесть</td>
+            <td>1965</td>
+            <td>4.5</td>
+            <td><button type="button" class="take" disabled>Выдана</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="my">
+      <h2>Мои книги</h2>
+      <ul id="my-list">
+        <li data-book-id="6">Понедельник начинается в субботу — взята 2026-11-02</li>
+        <li data-book-id="2">Собачье сердце</li>
+      </ul>
+    </section>
+
+    <section id="add-section">
+      <h2>Добавить книгу</h2>
+      <form id="add-form">
+        <input type="text" name="title" placeholder="Название" required>
+        <input type="text" name="author" placeholder="Автор" required>
+        <select name="genre" required>
+          <option value="">Выберите жанр</option>
+          <option value="Роман">Роман</option>
+          <option value="Повесть">Повесть</option>
+          <option value="Фантастика">Фантастика</option>
+        </select>
+        <input type="number" name="year" placeholder="Год" required>
+        <input type="number" name="rating" step="0.1" min="0" max="5" placeholder="Рейтинг">
+        <button type="submit">Добавить</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>© Библиотека</footer>
+</body>
+</html>
