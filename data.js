@@ -1,0 +1,96 @@
+var books = [
+  {
+    id: 1,
+    title: "Мастер и Маргарита",
+    author: "Михаил Булгаков",
+    genre: "Роман",
+    year: 1967,
+    rating: 4.9,
+    available: true,
+  },
+  {
+    id: 2,
+    title: "Собачье сердце",
+    author: "Михаил Булгаков",
+    genre: "Повесть",
+    year: 1925,
+    rating: 4.8,
+    available: true,
+  },
+  {
+    id: 3,
+    title: "Война и мир",
+    author: "Лев Толстой",
+    genre: "Роман",
+    year: 1869,
+    rating: 4.7,
+    available: true,
+  },
+  {
+    id: 4,
+    title: "Солярис",
+    author: "Станислав Лем",
+    genre: "Фантастика",
+    year: 1961,
+    rating: 4.6,
+    available: false,
+  },
+  {
+    id: 5,
+    title: "Гиперион",
+    author: "Дэн Симмонс",
+    genre: "Фантастика",
+    year: 1989,
+    rating: 4.4,
+    available: true,
+  },
+  {
+    id: 6,
+    title: "Понедельник начинается в субботу",
+    author: "Братья Стругацкие",
+    genre: "Повесть",
+    year: 1965,
+    rating: 4.5,
+    available: false,
+  },
+];
+
+var users = [
+  { id: 1, name: "Анна" },
+  { id: 2, name: "Борис" },
+];
+
+var loans = [
+  {
+    id: 1,
+    userId: 1,
+    bookId: 3,
+    takenAt: "2026-10-01",
+    returnedAt: "2026-10-15",
+    rating: 5,
+  },
+  {
+    id: 2,
+    userId: 1,
+    bookId: 2,
+    takenAt: "2026-10-10",
+    returnedAt: "2026-10-25",
+    rating: 4,
+  },
+  {
+    id: 3,
+    userId: 2,
+    bookId: 4,
+    takenAt: "2026-11-05",
+    returnedAt: null,
+    rating: null,
+  },
+  {
+    id: 4,
+    userId: 1,
+    bookId: 6,
+    takenAt: "2026-11-02",
+    returnedAt: null,
+    rating: null,
+  },
+];
